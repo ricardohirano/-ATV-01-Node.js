@@ -1,0 +1,81 @@
+<% currentPage = 'lanches' %>
+<%- include('partials/header') %>
+
+<!-- PAGE HERO -->
+<section class="page-hero page-hero-lanches">
+  <div class="page-hero-overlay"></div>
+  <div class="container position-relative text-center text-white">
+    <span class="hero-badge">🥖 Fresquinhos todos os dias</span>
+    <h1 class="page-hero-title">Lanches & Beirutes</h1>
+    <p class="page-hero-subtitle">Lanches especiais feitos com ingredientes selecionados</p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="/" class="text-warning">Início</a></li>
+        <li class="breadcrumb-item active text-white">Lanches</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="py-6">
+  <div class="container">
+
+    <!-- Cards Grid -->
+    <div class="row g-4">
+      <% lanches.forEach(function(lanche) { %>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card product-card h-100">
+
+          <!-- Imagem -->
+          <div class="card-img-wrap">
+            <img
+              src="<%= lanche.imagem %>"
+              alt="<%= lanche.nome %>"
+              class="card-img-product"
+              onerror="this.src='/img/placeholder.jpg'; this.onerror=null;"
+            />
+          </div>
+
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= lanche.nome %></h6>
+            <p class="card-text text-muted" style="font-size: .82rem"><%= lanche.descricao %></p>
+            <span class="product-price">R$ <%= lanche.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- Tabela -->
+    <div class="mt-6">
+      <h4 class="fw-bold mb-3"><i class="bi bi-table me-2 text-warning"></i>Tabela de Preços</h4>
+      <div class="table-responsive">
+        <table class="table table-custom">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Produto</th>
+              <th>Descrição</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% lanches.forEach(function(lanche) { %>
+            <tr>
+              <td><%= lanche.id %></td>
+              <td><strong><%= lanche.nome %></strong></td>
+              <td class="text-muted small"><%= lanche.descricao.substring(0, 70) %>...</td>
+              <td><strong class="text-warning">R$ <%= lanche.preco.toFixed(2).replace('.', ',') %></strong></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>

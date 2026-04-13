@@ -1,0 +1,104 @@
+<% currentPage = 'doces' %>
+<%- include('partials/header') %>
+
+<!-- PAGE HERO -->
+<section class="page-hero page-hero-doces">
+  <div class="page-hero-overlay"></div>
+  <div class="container position-relative text-center text-white">
+    <span class="hero-badge">🍰 Receitas exclusivas</span>
+    <h1 class="page-hero-title">Doces & Bolos</h1>
+    <p class="page-hero-subtitle">Brigadeiros, bolos caseiros, sonhos e muito mais para adoçar seu dia</p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="/" class="text-warning">Início</a></li>
+        <li class="breadcrumb-item active text-white">Doces</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<section class="py-6">
+  <div class="container">
+
+    <!-- Bolos & Tortas -->
+    <h4 class="fw-bold mb-4"><i class="bi bi-cake2-fill text-warning me-2"></i>Bolos, Rocamboles & Tortas</h4>
+    <div class="row g-4 mb-6">
+      <% doces.filter(d => d.categoria === 'Bolos & Tortas').forEach(function(doce) { %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card product-card h-100">
+          <div class="card-img-wrap">
+            <img
+              src="<%= doce.imagem %>"
+              alt="<%= doce.nome %>"
+              class="card-img-product"
+              onerror="this.src='/img/placeholder.jpg'; this.onerror=null;"
+            />
+          </div>
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= doce.nome %></h6>
+            <p class="card-text text-muted" style="font-size: .82rem"><%= doce.descricao %></p>
+            <span class="product-price">R$ <%= doce.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <hr class="sobre-divider mb-5" />
+
+    <!-- Doces -->
+    <h4 class="fw-bold mb-4"><i class="bi bi-heart-fill text-warning me-2"></i>Doces</h4>
+    <div class="row g-4">
+      <% doces.filter(d => d.categoria === 'Doces').forEach(function(doce) { %>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card product-card h-100">
+          <div class="card-img-wrap">
+            <img
+              src="<%= doce.imagem %>"
+              alt="<%= doce.nome %>"
+              class="card-img-product"
+              onerror="this.src='/img/placeholder.jpg'; this.onerror=null;"
+            />
+          </div>
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= doce.nome %></h6>
+            <p class="card-text text-muted" style="font-size: .82rem"><%= doce.descricao %></p>
+            <span class="product-price">R$ <%= doce.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- Tabela -->
+    <div class="mt-6">
+      <h4 class="fw-bold mb-3"><i class="bi bi-table me-2 text-warning"></i>Tabela de Preços</h4>
+      <div class="table-responsive">
+        <table class="table table-custom">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Produto</th>
+              <th>Categoria</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% doces.forEach(function(doce) { %>
+            <tr>
+              <td><%= doce.id %></td>
+              <td><strong><%= doce.nome %></strong></td>
+              <td><span class="badge badge-tag"><%= doce.categoria %></span></td>
+              <td><strong class="text-warning">R$ <%= doce.preco.toFixed(2).replace('.', ',') %></strong></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>

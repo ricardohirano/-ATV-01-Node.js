@@ -1,0 +1,45 @@
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top" id="mainNav">
+  <div class="container">
+
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+      <img src="/img/logo/logo.png" alt="Empório dos Pães" height="50" class="logo-nav" />
+    </a>
+
+    <!-- Toggler mobile -->
+    <button class="navbar-toggler border-0" type="button"
+            data-bs-toggle="collapse" data-bs-target="#navMenu"
+            aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
+        <li class="nav-item">
+          <a class="nav-link px-3 <%= typeof currentPage !== 'undefined' && currentPage === 'home'    ? 'active' : '' %>" href="/">
+            <i class="bi bi-house-fill me-1"></i>Início
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 <%= typeof currentPage !== 'undefined' && currentPage === 'lanches' ? 'active' : '' %>" href="/lanches">
+            <i class="bi bi-bag-fill me-1"></i>Lanches
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 <%= typeof currentPage !== 'undefined' && currentPage === 'doces'   ? 'active' : '' %>" href="/doces">
+            <i class="bi bi-cake2-fill me-1"></i>Doces
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link px-3 <%= typeof currentPage !== 'undefined' && currentPage === 'coffee'  ? 'active' : '' %>" href="/coffee-break">
+            <i class="bi bi-cup-hot-fill me-1"></i>Coffee Break
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+
+  </div>
+</nav>

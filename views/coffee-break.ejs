@@ -1,0 +1,152 @@
+<% currentPage = 'coffee' %>
+<%- include('partials/header') %>
+
+<!-- PAGE HERO -->
+<section class="page-hero page-hero-coffee">
+  <div class="page-hero-overlay"></div>
+  <div class="container position-relative text-center text-white">
+    <span class="hero-badge">☕ Empório Personalize</span>
+    <h1 class="page-hero-title">Coffee Break</h1>
+    <p class="page-hero-subtitle">A escolha perfeita para o seu momento especial – palestras, reuniões, aniversários e happy hours</p>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a href="/" class="text-warning">Início</a></li>
+        <li class="breadcrumb-item active text-white">Coffee Break</li>
+      </ol>
+    </nav>
+  </div>
+</section>
+
+<section class="py-6">
+  <div class="container">
+
+    <!-- ENCOMENDA BANNER -->
+    <div class="personalize-banner mb-6">
+      <div class="row align-items-center g-3">
+        <div class="col-md-8">
+          <h4 class="fw-bold mb-1">🎯 Monte seu Coffee Break personalizado!</h4>
+          <p class="mb-0 text-muted">Escolha os itens desejados e entre em contato para solicitar seu orçamento.</p>
+        </div>
+        <div class="col-md-4 text-md-end">
+          <a href="https://wa.me/5513997081804" target="_blank" class="btn btn-hero-primary">
+            <i class="bi bi-whatsapp me-2"></i>Solicitar Orçamento
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================== BEBIDAS ===================== -->
+    <h4 class="fw-bold mb-4"><i class="bi bi-cup-hot-fill text-warning me-2"></i>Bebidas</h4>
+    <div class="row g-4 mb-6">
+      <% bebidas.forEach(function(item) { %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card product-card h-100">
+          <div class="card-img-wrap">
+            <img src="<%= item.imagem %>" alt="<%= item.nome %>" class="card-img-product"
+                 onerror="this.src='/img/placeholder.jpg'; this.onerror=null;" />
+          </div>
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= item.nome %></h6>
+            <p class="card-text text-muted" style="font-size:.82rem"><%= item.descricao %></p>
+            <span class="product-price coffee-price">R$ <%= item.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <hr class="sobre-divider mb-5" />
+
+    <!-- ===================== MINI SALGADOS ===================== -->
+    <h4 class="fw-bold mb-4"><i class="bi bi-egg-fried text-warning me-2"></i>Mini Salgados</h4>
+    <div class="row g-4 mb-6">
+      <% miniSalgados.forEach(function(item) { %>
+      <div class="col-sm-6 col-lg-3">
+        <div class="card product-card h-100">
+          <div class="card-img-wrap">
+            <img src="<%= item.imagem %>" alt="<%= item.nome %>" class="card-img-product"
+                 onerror="this.src='/img/placeholder.jpg'; this.onerror=null;" />
+          </div>
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= item.nome %></h6>
+            <p class="card-text text-muted" style="font-size:.82rem"><%= item.descricao %></p>
+            <span class="product-price coffee-price">R$ <%= item.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <hr class="sobre-divider mb-5" />
+
+    <!-- ===================== MINI SANDUÍCHES ===================== -->
+    <h4 class="fw-bold mb-4"><i class="bi bi-three-dots text-warning me-2"></i>Mini Sanduíches</h4>
+    <div class="row g-4">
+      <% miniSanduiches.forEach(function(item) { %>
+      <div class="col-sm-6 col-lg-4">
+        <div class="card product-card h-100">
+          <div class="card-img-wrap">
+            <img src="<%= item.imagem %>" alt="<%= item.nome %>" class="card-img-product"
+                 onerror="this.src='/img/placeholder.jpg'; this.onerror=null;" />
+          </div>
+          <div class="card-body px-3 pb-4">
+            <h6 class="card-title fw-bold mt-1"><%= item.nome %></h6>
+            <p class="card-text text-muted" style="font-size:.82rem"><%= item.descricao %></p>
+            <span class="product-price coffee-price">R$ <%= item.preco.toFixed(2).replace('.', ',') %></span>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+
+    <!-- TABELA GERAL -->
+    <div class="mt-6">
+      <h4 class="fw-bold mb-3"><i class="bi bi-table me-2 text-warning"></i>Tabela de Preços</h4>
+      <div class="table-responsive">
+        <table class="table table-custom">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Produto</th>
+              <th>Categoria</th>
+              <th>Qtd.</th>
+              <th>Preço</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% bebidas.forEach(function(item) { %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><strong><%= item.nome %></strong></td>
+              <td><span class="badge badge-tag">Bebidas</span></td>
+              <td><small class="text-muted"><%= item.descricao %></small></td>
+              <td><strong class="text-warning">R$ <%= item.preco.toFixed(2).replace('.', ',') %></strong></td>
+            </tr>
+            <% }); %>
+            <% miniSalgados.forEach(function(item) { %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><strong><%= item.nome %></strong></td>
+              <td><span class="badge badge-tag" style="background:rgba(107,56,0,.12)!important;color:#6B3800!important;border-color:rgba(107,56,0,.3)">Mini Salgados</span></td>
+              <td><small class="text-muted"><%= item.descricao %></small></td>
+              <td><strong class="text-warning">R$ <%= item.preco.toFixed(2).replace('.', ',') %></strong></td>
+            </tr>
+            <% }); %>
+            <% miniSanduiches.forEach(function(item) { %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><strong><%= item.nome %></strong></td>
+              <td><span class="badge badge-tag" style="background:rgba(0,90,60,.12)!important;color:#005A3C!important;border-color:rgba(0,90,60,.3)">Mini Sanduíches</span></td>
+              <td><small class="text-muted"><%= item.descricao %></small></td>
+              <td><strong class="text-warning">R$ <%= item.preco.toFixed(2).replace('.', ',') %></strong></td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<%- include('partials/footer') %>
